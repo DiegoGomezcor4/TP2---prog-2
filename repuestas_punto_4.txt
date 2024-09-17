@@ -1,22 +1,66 @@
 
     
-# 4. Una vez codificadas en Python las Clases de los puntos anteriores, instancie los objetos 
-# tal como sucede en las siguientes instrucciones:
+4. Una vez codificadas en Python las Clases de los puntos anteriores, instancie los objetos 
+ tal como sucede en las siguientes instrucciones:
 
 mozo1 = Mozo('Alfredo') 
 mozo2 = Mozo('Alfredo')
 
-# i. Mozo 1 y Mozo 2 no hacen referencia al mismo objeto
-# ii. no son equivalentes en este contexto, dos objetos son equivalentes
-    # en python si al compararlos con  == retorna True
-    # la equivalencia entre objetos depende de como este definido el 
-    # operador ==, si no se ha definido en la clase MOzo, entonces por defecto
-    # python usa la comparacio de identidad (es decir compara si son el mismo objeto)
+
+ii. no son equivalentes en este contexto, dos objetos son equivalentes
+    en python si al compararlos con  == retorna True
+    la equivalencia entre objetos depende de como este definido el 
+    operador ==, si no se ha definido en la clase MOzo, entonces por defecto
+    python usa la comparacio de identidad (es decir compara si son el mismo objeto)
 
 print(mozo1 == mozo2)
 
-# iii . No comparte la misa seccion de memoria, para comprobar esto
-    # utilizamos la funcion id()
+iii . No comparte la misa seccion de memoria, para comprobar esto
+    utilizamos la funcion id()
     
 print(id(mozo1)) # Muestra la direccion de memoria de mozo1
 print(id(mozo2)) # Muestra la direccion de memoria de mozo2
+
+
+nuevas respuestas:
+
+i. ¿Los identificadores mozo1 y mozo2 hacen referencia al mismo objeto?
+No, en este caso mozo1 y mozo2 no hacen referencia al mismo objeto. Aunque ambos fueron creados 
+con el mismo valor para el atributo nombre ("Alfredo"), son dos instancias diferentes de la clase Mozo. 
+Cada llamada al constructor Mozo() crea un objeto nuevo en memoria, por lo que mozo1 y mozo2 ocupan 
+espacios de memoria distintos.
+
+
+ii. ¿Son objetos equivalentes? Explique qué significa que dos objetos lo sean.
+Depende de cómo se defina la equivalencia en la clase. Si en la clase Mozo no has
+ sobrescrito el método __eq__, entonces mozo1 y mozo2 no serán considerados equivalentes,
+  ya que Python comparará las posiciones de memoria por defecto.
+
+Si quisieras que dos objetos sean equivalentes en función de su contenido (en este caso, 
+si los nombres de los mozos son iguales), tendrías que definir el método __eq__ en la clase 
+Mozo para que compare los atributos relevantes, como nombre. Algo como esto:
+
+python
+Copiar código
+class Mozo:
+    def __eq__(self, other):
+        return self.nombre == other.nombre
+Con esto, mozo1 y mozo2 serían equivalentes si ambos tienen el mismo valor para nombre.
+
+Ser equivalentes significa que los objetos tienen los mismos valores para los atributos 
+considerados importantes (en este caso, el nombre). Sin embargo, esto no implica que sean el 
+mismo objeto en memoria.
+
+
+iii. ¿Los objetos ligados a mozo1 y mozo2 comparten la misma posición de memoria?
+No, no comparten la misma posición de memoria. A pesar de que ambos objetos tienen el mismo valor en el 
+atributo nombre, fueron creados de manera independiente y ocupan espacios de memoria diferentes.
+
+Puedes comprobarlo usando el operador is, que verifica si dos variables hacen referencia al mismo objeto 
+en memoria:
+
+python
+Copiar código
+print(mozo1 is mozo2)  # Esto devolverá False
+Este operador verifica si ambos objetos son el mismo (es decir, si están en la misma ubicación de memoria),
+ lo cual en este caso no sucede.
