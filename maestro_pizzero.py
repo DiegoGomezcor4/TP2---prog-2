@@ -18,6 +18,7 @@ class MaestroPizzero:
         if var: # Requiere que el parametro var no este vacio
             pizza = Pizza(var)
             self.pizzasPorCocinar.append(pizza)
+            return pizza  # Devuelve el objeto pizza
 
         # Comando para cocinar (mueve pizzad de pizzasPorCocinar a pizzasPorEntregar)
     def cocinar(self):
