@@ -45,4 +45,4 @@ class MaestroPizzero:
     
         # Consulta para obtener las pizzas listas para entregar
     def obtenerPizzasPorEntregar(self):
-        return self.obtenerPizzasPorEntregar
+        return self.pizzasPorEntregar
